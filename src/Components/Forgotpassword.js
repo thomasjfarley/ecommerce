@@ -1,8 +1,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Code from './code'
+
 
 import '../Styles/Login.css'
 
@@ -11,11 +10,17 @@ export default class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            email: '',
+            open: false,
+            email: ''
         }
     }
     render() {
+
+        // const text = this.state.open ? "Hide" : "Show"
+
         const handleSubmit = (event) => {
+            // event.preventDefault()
+            alert("Enter Passcode 12345")
             const payload = {
                 event: event,
                 email: this.state.email,
@@ -23,6 +28,9 @@ export default class extends React.Component {
 
             }
             this.props.submitHandler(payload)
+
+
+
             // event.preventDefault()
             // console.log(this.state.username + " : " + this.state.password)
         }
@@ -37,34 +45,44 @@ export default class extends React.Component {
         //
         // }
         return (
-            <div className="login">
-                <form className="flexBox" onSubmit={handleSubmit}>
-                    Forgot Password
-                    <TextField id="use" required
-                               fullWidth={true}
-                               placeholder="Email"
-                               type="email"
-                               onChange={event => this.setState({email: event.target.value})}/>
-                    <Router>
-                        <div>
-                            <div>
-                                <Link to='/forgotpassword/code'>
+            <div>
+                {/*<div>*/}
+                    {/*<input type="button" value={text}*/}
+                       {/*onClick={() => this.setState({open: !this.state.open})}*/}
+                    {/*/>*/}
+                    {/*{this.state.open ? <div>Opened</div> : ""}*/}
+                {/*</div>*/}
+                <div className="login">
+                    <form className="flexBox" onSubmit={handleSubmit}>
+                        Forgot Password
+                        <TextField id="use" required
+                                   fullWidth={true}
+                                   placeholder="Email"
+                                   type="email"
+                                   onChange={event => this.setState({email: event.target.value})}/>
                                 <RaisedButton type="submit"
-                                                label={"Submit"}/>
-                                </Link>
-                            </div>
-                            <Route exact path='/forgotpassword/code' component={Code}/>
+                                              label={"Submit"}
+                                              onClick={handleSubmit}
+                                              href='/code'
 
-                        </div>
-
-                    </Router>
+                                />
 
 
-                </form>
+                        <hr/>
+                        {/*{this.state.open ? <div><FPForm/></div> : ""}*/}
 
+
+                    </form>
+
+                </div>
             </div>
         )
     }
 
+
 }
+
+
+
+
 

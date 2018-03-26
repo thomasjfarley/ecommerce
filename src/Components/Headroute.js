@@ -7,6 +7,7 @@ import {grey800, white} from 'material-ui/styles/colors.js';
 import MyLogin from '../Forms';
 import Forgotpassword from './Forgotpassword.js';
 import Dice from '../Pages/Dice';
+import code from "./code";
 
 const style = {
     backgroundColor: grey800,
@@ -33,13 +34,13 @@ const Routing = () => (
             <Paper style={style}>
             <div className='flexbox'>
                 <div className='headbutton'>
-                    <Link to='/'><FlatButton label="Home"/></Link>
+                    <Link to='/'><FlatButton label="Home" labelStyle={style}/></Link>
                 </div>
                 <div>
-                    <Link to='/About'><FlatButton>About</FlatButton></Link>
+                    <Link to='/About'><FlatButton label="About" labelStyle={style}/></Link>
                 </div>
                 <div>
-                    <Link to='/Login'><FlatButton>Login</FlatButton></Link>
+                    <Link to='/Login'><FlatButton label="Login" labelStyle={style}/></Link>
                 </div>
             </div>
         </Paper>
@@ -52,6 +53,7 @@ const Routing = () => (
             <Route exact path='/Login' component={Login}/>
             <Route exact path='/forgotpassword' component={Forgotpassword}/>
             <Route exact path='/Dice' component={Dice}/>
+            <Route exact path='/code' component={code}/>
         </div>
 
     </Router>

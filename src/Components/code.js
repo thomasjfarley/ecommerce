@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import '../Styles/Login.css'
 
-export default class extends Component {
+
+export default class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             vcode: '',
-            sanswer: '',
+            squestion: '',
             password: '',
             cpassword: ''
         }
@@ -22,7 +23,7 @@ export default class extends Component {
             const payload = {
                 event: event,
                 vcode: this.state.vcode,
-                sanswer: this.state.sanswer,
+                squestion: this.state.squestion,
                 password: this.state.password,
                 cpassword: this.state.cpassword,
             }
@@ -30,9 +31,17 @@ export default class extends Component {
             // console.log("Pass1:", this.state.password)
             // console.log("Pass2:", this.state.cpassword)
 
+            if(this.state.vcode === "12345"){
+                console.log("Nailed it")
+            }
+            else {
+                alert("false code")
+                return false;
+            }
+
             if(this.state.password === this.state.cpassword){
                 console.log("Yes")
-                alert("Password Change Sucessful")
+                alert("Password Change Successful")
 
             }else {
                 console.log("NO")
@@ -64,20 +73,19 @@ export default class extends Component {
         return (
             <div className="login">
                 <form className="flexBox" onSubmit={handleSubmit}>
-
                     <TextField id="vcode" required
                                fullWidth={true}
                                placeholder="Verification Code"
                                onChange={event => this.setState({vcode: event.target.value})}/>
-                    What year did you Graduate?
-                    <TextField id="securityanswer" required
+                    <div>What year did you graduate?</div>
+                    <TextField id="squestion" required
                                fullWidth={true}
                                placeholder="Security Answer"
-                               onChange={event => this.setState({sanswer: event.target.value})}/>
+                               onChange={event => this.setState({squestion: event.target.value})}/>
                     <TextField id='password' required
                                fullWidth={true}
                                type="password"
-                               placeholder="New Password"
+                               placeholder="Password"
                                onChange={event => this.setState({password: event.target.value})}/>
                     <TextField id='confirm-password' required
                                fullWidth={true}
