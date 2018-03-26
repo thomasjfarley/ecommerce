@@ -10,17 +10,23 @@ export default class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            open: false,
-            email: ''
+            passState: 0
         }
     }
     render() {
 
         // const text = this.state.open ? "Hide" : "Show"
+        const passcode = (min, max) => {
+            min = Math.ceil(10000);
+            max = Math.floor(99999);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+
+        }
+
 
         const handleSubmit = (event) => {
             // event.preventDefault()
-            alert("Enter Passcode 12345")
+            alert("Enter Passcode "+ passcode())
             const payload = {
                 event: event,
                 email: this.state.email,
