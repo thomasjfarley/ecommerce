@@ -18,19 +18,6 @@ export default class extends React.Component {
     render() {
         const handleSubmit = (event) => {
             event.preventDefault()
-
-            // console.log("Hello from Handle submit")
-            const payload = {
-                event: event,
-                vcode: this.state.vcode,
-                squestion: this.state.squestion,
-                password: this.state.password,
-                cpassword: this.state.cpassword,
-            }
-
-            // console.log("Pass1:", this.state.password)
-            // console.log("Pass2:", this.state.cpassword)
-
             if(this.state.vcode === "12345"){
                 console.log("Nailed it")
             }
@@ -48,28 +35,7 @@ export default class extends React.Component {
                 alert("Passwords do not Match")
                 return false;
             }
-
-
-            this.props.submitHandler(payload)
-            // if ($("#password").val() != $("#cpassword").val()) {
-            //     alert("Passwords do not match.");
-            // }
-            // event.preventDefault()
-            // console.log(this.state.username + " : " + this.state.password)
         }
-
-
-
-        // const handleTextChange = (event) => {
-        //     this.setState({username: event.target.value})
-        // }
-        // const handleUsernameChange = (event) => {
-        //     //console.log(event.target.value)
-        //     this.setState({username: event.target.value});
-        //     event.preventDefault();
-        //
-        //
-        // }
         return (
             <div className="login">
                 <form className="flexBox" onSubmit={handleSubmit}>
@@ -95,8 +61,6 @@ export default class extends React.Component {
 
                     <RaisedButton type="submit"
                                   label={"Submit"}/>
-
-
                 </form>
             </div>
         )

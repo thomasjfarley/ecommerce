@@ -32,9 +32,6 @@ export default class extends React.Component {
                 cpassword: this.state.cpassword,
             }
 
-            // console.log("Pass1:", this.state.password)
-            // console.log("Pass2:", this.state.cpassword)
-
             if(this.state.password === this.state.cpassword){
                 console.log("Yes")
                 alert("Registration Sucessful")
@@ -69,10 +66,12 @@ export default class extends React.Component {
         return (
             <div className="login">
                 <form className="flexBox" onSubmit={handleSubmit}>
+
                     <TextField id="first-name"
                                fullWidth={true}
                                placeholder="First Name"
                                onChange={event => this.setState({fname: event.target.value})}/>
+
                     <TextField id="last-name"
                                fullWidth={true}
                                placeholder="Last Name"
@@ -82,10 +81,12 @@ export default class extends React.Component {
                                placeholder="Email"
                                type="email"
                                onChange={event => this.setState({email: event.target.value})}/>
+
                     <TextField id="username" required
                                fullWidth={true}
                                placeholder="Username"
                                onChange={event => this.setState({username: event.target.value})}/>
+                    
                     <TextField id='password' required
                                fullWidth={true}
                                type="password"
